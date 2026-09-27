@@ -8,3 +8,4 @@ GitHub pages deployment: https://sl0rpchi.github.io/FTEQCC-PreCompiled-web-files
 
 To be honest, quake 2 and three are heavily online and do not support their single player modes or campaigns, so if your serious about playing others, you shouldnt use this port
 But on the bright side, this is the ONLY engine on web that can play huge conversions or mods, like arcane dimensions, or even the dimension of the machines mission pack, you got it, it plays it.
+Also features real time lighting and working multiplayer!
