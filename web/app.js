@@ -392,6 +392,17 @@
         }
     }
 
+    function reportCompileFailure(error) {
+        const message = error && error.message ? error.message : String(error);
+        document.getElementById("compiler-output").textContent = message;
+        document.getElementById("compile-status").textContent = "Build failed";
+        document.getElementById("download-build").disabled = true;
+        windows.get("output").hidden = false;
+        bringToFront("output");
+        setStatus("Build failed - see compiler output");
+        document.querySelectorAll('[data-action="compile"]').forEach((button) => { button.disabled = false; });
+    }
+
     function bringToFront(name) {
         const element = windows.get(name);
         if (!element) return;
@@ -438,7 +449,7 @@
             case "open": fileInput.click(); break;
             case "save": saveProject(); break;
             case "download": downloadActiveFile(); break;
-            case "compile": compileProject(); break;
+            case "compile": compileProject().catch(reportCompileFailure); break;
             case "undo": editor.undo(); break;
             case "redo": editor.redo(); break;
             case "find": findInFile(); break;
@@ -474,7 +485,15 @@
             return;
         }
         const actionButton = event.target.closest("[data-action]");
-        if (actionButton) handleAction(actionButton.dataset.action);
+        if (actionButton && actionButton.dataset.action !== "compile") handleAction(actionButton.dataset.action);
+    });
+
+    document.querySelectorAll('[data-action="compile"]').forEach((button) => {
+        button.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            handleAction("compile");
+        });
     });
 
     document.addEventListener("click", (event) => {
