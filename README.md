@@ -13,6 +13,8 @@ Pages deployment for GMQCC with interactive UI: https://sl0rpchi.github.io/Quake
 But on the bright side, this is the ONLY engine on the web that can play huge conversions or mods, like arcane dimensions, or even the dimension of the machines mission pack, you got it, it plays it.
 Also features real time lighting and working multiplayer! will be fixed very soon if it doesn't work for you, just put it in the issues tab, and I'll get to it!)
 
+Also about the GMQCC compiler, things that would throw warnings and just slide on FTEQCC, *will NOT* slide here, eg.. in the source code in doors.qc there's "void(entity, float)" (which is why you may have ever seen blood particles fly out of some secret doors or player shot triggers)
+
 Previews:
 compiler:
 <img width="1365" height="608" alt="image" src="https://github.com/user-attachments/assets/4553073b-5626-42ed-8db9-3460e3010ca5" />
