@@ -338,6 +338,14 @@
         const output = document.getElementById("compiler-output");
         const status = document.getElementById("compile-status");
         const downloadButton = document.getElementById("download-build");
+        const manifestName = selectedManifest;
+        const manifestFirstLine = manifestName && files.has(manifestName)
+            ? files.get(manifestName).split(/\r?\n/).map((line) => line.trim()).find((line) => line && !line.startsWith("//"))
+            : "";
+        const configuredOutput = safeFilename(document.getElementById("output-name").value || "progs.dat");
+        const outputName = manifestFirstLine && configuredOutput === "progs.dat"
+            ? safeFilename(manifestFirstLine)
+            : configuredOutput;
         const options = {
             standard: document.getElementById("standard-select").value,
             optimization: document.getElementById("optimization-select").value,
@@ -347,14 +355,6 @@
         localStorage.setItem(`${storageKey}-options`, JSON.stringify(options));
         compilerOptions = options;
         if (activeFile) files.set(activeFile, isSourceManifest(activeFile) ? document.getElementById("manifest-editor").value : editor.getValue());
-        const manifestName = selectedManifest;
-        const manifestFirstLine = manifestName && files.has(manifestName)
-            ? files.get(manifestName).split(/\r?\n/).map((line) => line.trim()).find((line) => line && !line.startsWith("//"))
-            : "";
-        const configuredOutput = safeFilename(document.getElementById("output-name").value || "progs.dat");
-        const outputName = manifestFirstLine && configuredOutput === "progs.dat"
-            ? safeFilename(manifestFirstLine)
-            : configuredOutput;
         output.textContent = "Starting WebAssembly compiler...\n";
         status.textContent = "Compiling...";
         downloadButton.disabled = true;
