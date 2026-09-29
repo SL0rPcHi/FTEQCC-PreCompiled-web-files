@@ -9,8 +9,7 @@ GitHub pages deployment for FTEQW: https://sl0rpchi.github.io/FTEQCC-PreCompiled
 
 Pages deployment for GMQCC with interactive UI: https://sl0rpchi.github.io/Quake-ultimate-web-tools/web/
 
-(To be honest, quake 2 and three are heavily online and do not support their single player modes or campaigns, so if your serious about playing others, you shouldn't use this port
-But on the bright side, this is the ONLY engine on the web that can play huge conversions or mods, like arcane dimensions, or even the dimension of the machines mission pack, you got it, it plays it.
+(Also It may be a little hard to setup quake 3, do not just use any pak0.pk3 file, only use pak0.pk3 to pak8.pk3, the pak0 should be *over* 400mb or its missing files like music, which instantly kills the vibe
 Also features real time lighting and working multiplayer! will be fixed very soon if it doesn't work for you, just put it in the issues tab, and I'll get to it!)
 
 Also about the GMQCC compiler, things that would throw warnings and just slide on FTEQCC, *will NOT* slide here, eg.. in the source code in doors.qc there's "void(entity, float)" (which is why you may have ever seen blood particles fly out of some secret doors or player shot triggers)
@@ -18,6 +17,9 @@ Also about the GMQCC compiler, things that would throw warnings and just slide o
 Previews:
 compiler:
 <img width="1365" height="608" alt="image" src="https://github.com/user-attachments/assets/4553073b-5626-42ed-8db9-3460e3010ca5" />
-Engine:
+Engine running quake 1:
 
 <img width="1366" height="768" alt="Screenshot 2026-09-28 12 24 51 AM" src="https://github.com/user-attachments/assets/09a7aa92-a55c-4ddc-b4e8-ba5532469f25" />
+
+Engine running quake 3 also me getting cooked by ranger: 
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/8aa45d46-1b75-4af7-82a0-d1bd6c6f5f07" />
