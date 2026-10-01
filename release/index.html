@@ -223,6 +223,20 @@ function renamefile(fname)
 		showfiles();
 	}
 }
+function simfile(fname)
+{
+	const newpath = prompt("Please enter simulated directory path (e.g., 'id1/', 'mymod/', or leave empty for root)", "");
+	if (newpath != null)
+	{
+		let newname = newpath;
+		if (newpath != "" && !newpath.endsWith("/"))
+			newname = newpath + "/";
+		newname = newname + fname.split("/").pop();	//extract just the filename
+		Module.files[newname] = Module.files[fname];
+		delete Module.files[fname];
+		showfiles();
+	}
+}
 function remcfile(fname)
 {
 	Module['cache'].delete("/_/"+fname);
@@ -304,7 +318,8 @@ function showfiles()
 	for(let i = 0; i < keys.length; i++)
 	{
 		let rem = 	" <a href=\"javascript:remfile('"+keys[i]+"');\">[forget]</a>" +
-					" <a href=\"javascript:renamefile('"+keys[i]+"');\">[rename]</a>";
+					" <a href=\"javascript:renamefile('"+keys[i]+"');\">[rename]</a>" +
+					" <a href=\"javascript:simfile('"+keys[i]+"');\">[simulated directory]</a>";
 		if (Module.files[keys[i]] instanceof ArrayBuffer)
 		{
 			let sz = Module.files[keys[i]].byteLength;
